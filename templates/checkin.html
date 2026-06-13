@@ -3,35 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{lead_name}} — Monthly Check-in | My Pla</title>
+<title>{{month}} Check-in — {{lead_name}} | Ace Forge Studio</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #1a1a2e; line-height: 1.6; }
-  .container { max-width: 700px; margin: 40px auto; padding: 0 20px; }
-  .header { background: linear-gradient(135deg, #4a6fa5, #6b8fc5); color: white; padding: 40px; border-radius: 12px 12px 0 0; text-align: center; }
-  .header h1 { font-size: 24px; margin-bottom: 8px; }
-  .header p { opacity: 0.9; font-size: 16px; }
-  .body-card { background: white; padding: 40px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-  .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 30px; }
-  .stat { text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px; }
-  .stat .num { font-size: 32px; font-weight: 700; color: #4a6fa5; }
-  .stat .label { font-size: 13px; color: #666; margin-top: 4px; }
-  .section { margin-bottom: 30px; }
-  .section h2 { font-size: 18px; margin-bottom: 12px; color: #4a6fa5; }
+  body { font-family: 'Georgia', 'Times New Roman', serif; background: #111; color: #d4c9a8; line-height: 1.7; }
+  .container { max-width: 680px; margin: 40px auto; padding: 0 16px; }
+  .header { background: #0a0a0a; padding: 48px 40px 36px; border: 1px solid #333; border-bottom: 3px solid #c88a2a; text-align: center; position: relative; }
+  .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, #c88a2a, #e8a840, #c88a2a, transparent); }
+  .header .brand { font-family: 'Arial Black', 'Impact', sans-serif; font-size: 13px; letter-spacing: 6px; text-transform: uppercase; color: #c88a2a; margin-bottom: 24px; }
+  .header h1 { font-size: 26px; color: #f0e6cc; font-weight: 400; letter-spacing: 1px; }
+  .header p { color: #8a7e62; font-size: 15px; margin-top: 8px; }
+  .body-card { background: #181818; padding: 40px; border: 1px solid #2a2a2a; border-top: none; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+  .stat { text-align: center; padding: 20px 12px; border: 1px solid #2a2a2a; background: #0f0f0f; }
+  .stat .num { font-size: 30px; font-weight: 700; color: #e8a840; font-family: 'Georgia', serif; }
+  .stat .label { font-size: 11px; color: #6a5e42; letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; font-family: 'Arial', sans-serif; }
+  .section { margin-bottom: 28px; }
+  .section h2 { font-size: 14px; color: #c88a2a; font-family: 'Arial', sans-serif; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #2a2a2a; }
   .section ul { list-style: none; padding: 0; }
-  .section ul li { padding: 8px 0; padding-left: 24px; position: relative; border-bottom: 1px solid #f0f0f0; }
-  .section ul li::before { content: "✓"; position: absolute; left: 0; color: #4a6fa5; }
-  .btn { display: block; background: #4a6fa5; color: white; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 600; font-size: 16px; text-align: center; margin: 10px 0; }
-  .btn:hover { background: #3d5f8f; }
-  .btn.green { background: #0d7c3f; }
-  .btn.green:hover { background: #0a6b36; }
-  .footer { text-align: center; padding: 30px; color: #888; font-size: 14px; }
+  .section ul li { padding: 8px 0; padding-left: 28px; position: relative; font-size: 14px; color: #b8ad92; border-bottom: 1px solid #1e1e1e; }
+  .section ul li:last-child { border-bottom: none; }
+  .section ul li::before { content: "✦"; position: absolute; left: 0; color: #c88a2a; font-size: 12px; }
+  .referral { border: 1px solid #c88a2a33; padding: 24px; margin: 24px 0; background: #1e1a12; text-align: center; }
+  .referral h2 { font-size: 14px; color: #e8a840; font-family: 'Arial', sans-serif; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .referral p { font-size: 14px; color: #8a7e62; margin-bottom: 4px; }
+  .footer { text-align: center; padding: 24px; color: #5a4e32; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; border-top: 1px solid #1e1e1e; }
+  .footer span { color: #c88a2a; }
 </style>
 </head>
 <body>
 <div class="container">
   <div class="header">
-    <h1>Monthly Check-in — {{month}} {{year}}</h1>
+    <div class="brand">Ace Forge Studio</div>
+    <h1>{{month}} {{year}} — Check-in</h1>
     <p>{{lead_name}} — {{business_type}}</p>
   </div>
   <div class="body-card">
@@ -42,7 +46,7 @@
       </div>
       <div class="stat">
         <div class="num">{{updates}}</div>
-        <div class="label">Updates Applied</div>
+        <div class="label">Updates</div>
       </div>
       <div class="stat">
         <div class="num">{{months_live}}</div>
@@ -51,30 +55,30 @@
     </div>
 
     <div class="section">
-      <h2>🛡️ Maintenance Completed</h2>
+      <h2>Maintenance Completed</h2>
       <ul>
         {{maintenance_items}}
       </ul>
     </div>
 
     <div class="section">
-      <h2>🚀 Ideas for Next Month</h2>
+      <h2>Ideas for Next Month</h2>
       <ul>
         {{upsell_items}}
       </ul>
     </div>
 
-    <div class="section" style="background: #fff9e6; padding: 20px; border-radius: 10px;">
-      <h2>💬 Know Someone Who Needs a Website?</h2>
-      <p>I'm always looking to help more local businesses. If you know someone who could use a site, send them my way — I'll take good care of them.</p>
-      <a href="https://wa.me/{{phone}}?text=Hey%2C%20I%20know%20someone%20who%20needs%20a%20website" class="btn green">Refer a Friend</a>
+    <div class="referral">
+      <h2>Know Someone?</h2>
+      <p>If you know a shop or service that needs a site, send them my way.</p>
+      <p style="color:#6a5e42; font-style:italic; margin-top:8px;">Reply to this email with their name and I'll reach out.</p>
     </div>
 
-    <a href="https://wa.me/{{phone}}" class="btn">Reply on WhatsApp</a>
+    <p style="text-align:center; font-size:14px; color:#8a7e62; margin-top:16px;">
+      Questions or changes? Just reply to this email.
+    </p>
   </div>
-  <div class="footer">
-    My Pla — Websites that work, maintained to last.
-  </div>
+  <div class="footer">Handcrafted by <span>Ace Forge Studio</span></div>
 </div>
 </body>
 </html>
